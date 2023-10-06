@@ -119,3 +119,6 @@ class TestLogisticRegression(unittest.TestCase):
         plt.ylabel('Actual')
         plt.title('Confusion Matrix')
         plt.savefig('confusion_matrix.png')  # Save confusion matrix figure
+
+if __name__ == '__main__':
+    unittest.main()
