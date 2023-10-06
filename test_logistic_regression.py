@@ -39,3 +39,10 @@ class TestLogisticRegression(unittest.TestCase):
         scaler = StandardScaler()
         self.X_train_scaled = scaler.fit_transform(self.X_train)
         self.X_test_scaled = scaler.transform(self.X_test)
+
+        # Define hyperparameters and their possible values
+        self.param_dist = {
+            'C': np.logspace(-6, 6, 14),  # Range of values for regularization strength
+            'penalty': ['l1', 'l2'],     # Regularization types
+            'solver': ['liblinear'],     # Specify solver for logistic regression
+        }
