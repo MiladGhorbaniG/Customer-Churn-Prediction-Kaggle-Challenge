@@ -35,3 +35,15 @@ The logistic regression model achieved an accuracy of approximately 81.16 % on t
 - **Confusion Matrix**:
 
 ![Confusion Matrix](images/confusion_matrix.png)
+
+
+## Repository Structure
+
+- `data/`: Contains the dataset file (e.g., telco_customer_churn.csv).
+- `src/`: Includes the source code files.
+- `images/`: Stores saved visualizations.
+- `src/test_logistic_regression.py`: The Python script for data preprocessing, model training, and evaluation.
+- `report.ipynb`: A Jupyter Notebook report from what is done on google colab.
+- `report.md`: A Markdown report (if available).
+- `images/roc_curve.png`: The ROC curve image.
+- `images/confusion_matrix.png`: The confusion matrix image.
