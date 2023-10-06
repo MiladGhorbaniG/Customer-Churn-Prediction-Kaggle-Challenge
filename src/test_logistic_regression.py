@@ -14,7 +14,7 @@ class TestLogisticRegression(unittest.TestCase):
 
     def setUp(self):
         # Load the dataset
-        self.data = pd.read_csv('/content/WA_Fn-UseC_-Telco-Customer-Churn.csv')
+        self.data = pd.read_csv('/data/WA_Fn-UseC_-Telco-Customer-Churn.csv')
 
         # Define target and relevant columns
         self.target_col = 'Churn'
