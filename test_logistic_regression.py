@@ -96,3 +96,15 @@ class TestLogisticRegression(unittest.TestCase):
         y_pred_proba = best_model_iter.predict_proba(X_test_selected)[:, 1]
         fpr, tpr, thresholds = roc_curve(self.y_test, y_pred_proba)
         auc = roc_auc_score(self.y_test, y_pred_proba)
+
+        # Plot ROC curve
+        plt.figure(figsize=(8, 6))
+        plt.plot(fpr, tpr, color='darkorange', lw=2, label=f'ROC curve (AUC = {auc:.2f})')
+        plt.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+        plt.xlim([0.0, 1.0])
+        plt.ylim([0.0, 1.05])
+        plt.xlabel('False Positive Rate')
+        plt.ylabel('True Positive Rate')
+        plt.title('Receiver Operating Characteristic')
+        plt.legend(loc='lower right')
+        plt.savefig('roc_curve.png')  # Save ROC curve figure
