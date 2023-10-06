@@ -111,3 +111,11 @@ class TestLogisticRegression(unittest.TestCase):
 
         # Calculate confusion matrix
         conf_matrix = confusion_matrix(self.y_test, y_pred)
+
+        # Plot confusion matrix as a heatmap
+        plt.figure(figsize=(8, 6))
+        sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', cbar=False)
+        plt.xlabel('Predicted')
+        plt.ylabel('Actual')
+        plt.title('Confusion Matrix')
+        plt.savefig('confusion_matrix.png')  # Save confusion matrix figure
