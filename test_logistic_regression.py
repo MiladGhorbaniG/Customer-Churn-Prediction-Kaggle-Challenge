@@ -108,3 +108,6 @@ class TestLogisticRegression(unittest.TestCase):
         plt.title('Receiver Operating Characteristic')
         plt.legend(loc='lower right')
         plt.savefig('roc_curve.png')  # Save ROC curve figure
+
+        # Calculate confusion matrix
+        conf_matrix = confusion_matrix(self.y_test, y_pred)
