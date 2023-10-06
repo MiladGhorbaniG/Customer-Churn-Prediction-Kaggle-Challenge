@@ -46,3 +46,13 @@ class TestLogisticRegression(unittest.TestCase):
             'penalty': ['l1', 'l2'],     # Regularization types
             'solver': ['liblinear'],     # Specify solver for logistic regression
         }
+
+    def test_model_accuracy(self):
+        best_accuracy = 0
+
+        # Number of iterations for randomized search
+        num_iterations = 1000
+
+        for i in range(num_iterations):
+            # Define the number of features to select in each iteration
+            num_features_to_select = random.randint(3, 8)
