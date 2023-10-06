@@ -30,3 +30,12 @@ class TestLogisticRegression(unittest.TestCase):
 
         # Convert 'No' to 0 and 'Yes' to 1 in y
         self.y = self.y.map({'No': 0, 'Yes': 1})
+
+        # Split the data into training and testing sets
+        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(
+            self.X, self.y, test_size=0.2, random_state=42)
+
+        # Data Scaling
+        scaler = StandardScaler()
+        self.X_train_scaled = scaler.fit_transform(self.X_train)
+        self.X_test_scaled = scaler.transform(self.X_test)
