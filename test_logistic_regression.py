@@ -85,3 +85,9 @@ class TestLogisticRegression(unittest.TestCase):
             # Check if the current model has higher accuracy than the best so far
             if accuracy > best_accuracy:
                 best_accuracy = accuracy
+        # Assert that the achieved accuracy is greater than or equal to a specified threshold
+        expected_accuracy_threshold = 0.8  # Adjust this threshold as needed
+        self.assertGreaterEqual(best_accuracy, expected_accuracy_threshold)
+
+        # Print the best accuracy
+        print(f'Best Accuracy: {best_accuracy:.4f}')
