@@ -91,3 +91,8 @@ class TestLogisticRegression(unittest.TestCase):
 
         # Print the best accuracy
         print(f'Best Accuracy: {best_accuracy:.4f}')
+
+        # Calculate ROC and AUC
+        y_pred_proba = best_model_iter.predict_proba(X_test_selected)[:, 1]
+        fpr, tpr, thresholds = roc_curve(self.y_test, y_pred_proba)
+        auc = roc_auc_score(self.y_test, y_pred_proba)
