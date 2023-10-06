@@ -21,3 +21,17 @@ This project aims to predict customer churn (i.e., whether a customer will disco
 - **Accuracy**: The model's performance was evaluated using accuracy as the primary metric.
 - **Receiver Operating Characteristic (ROC) Curve**: The ROC curve was plotted to visualize the model's true positive rate and false positive rate.
 - **Confusion Matrix**: A confusion matrix was generated to assess the model's performance in terms of true positives, true negatives, false positives, and false negatives.
+
+## Results
+
+The logistic regression model achieved an accuracy of approximately 81.16 % on the test set, indicating its ability to predict customer churn.
+
+## Visualizations
+
+- **ROC Curve**:
+
+![ROC Curve](images/roc_curve.png)
+
+- **Confusion Matrix**:
+
+![Confusion Matrix](images/confusion_matrix.png)
