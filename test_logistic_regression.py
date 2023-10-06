@@ -56,3 +56,32 @@ class TestLogisticRegression(unittest.TestCase):
         for i in range(num_iterations):
             # Define the number of features to select in each iteration
             num_features_to_select = random.randint(3, 8)
+            # Randomly select a subset of features
+            selected_features = np.random.choice(
+                self.X_train_scaled.shape[1], num_features_to_select, replace=False)
+            X_train_selected = self.X_train_scaled[:, selected_features]
+            X_test_selected = self.X_test_scaled[:, selected_features]
+
+            # Create Randomized Search with cross-validation
+            random_search = RandomizedSearchCV(
+                LogisticRegression(),
+                param_distributions=self.param_dist,
+                n_iter=20,                  # Number of random combinations to try
+                cv=5,                       # Number of cross-validation folds
+                scoring='accuracy',
+                random_state=i             # Vary the random state for different iterations
+            )
+
+            # Fit the Randomized Search to your data
+            random_search.fit(X_train_selected, self.y_train)
+
+            # Use the best model for predictions
+            best_model_iter = random_search.best_estimator_
+            y_pred = best_model_iter.predict(X_test_selected)
+
+            # Calculate accuracy
+            accuracy = accuracy_score(self.y_test, y_pred)
+
+            # Check if the current model has higher accuracy than the best so far
+            if accuracy > best_accuracy:
+                best_accuracy = accuracy
