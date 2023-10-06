@@ -22,3 +22,11 @@ class TestLogisticRegression(unittest.TestCase):
         all_columns.remove(self.target_col)  # Exclude target column
         self.X = self.data[all_columns]
         self.y = self.data[self.target_col]
+
+        # Encode categorical columns
+        label_encoder = LabelEncoder()
+        for col in self.X.select_dtypes(include=['object']).columns:
+            self.X[col] = label_encoder.fit_transform(self.X[col])
+
+        # Convert 'No' to 0 and 'Yes' to 1 in y
+        self.y = self.y.map({'No': 0, 'Yes': 1})
