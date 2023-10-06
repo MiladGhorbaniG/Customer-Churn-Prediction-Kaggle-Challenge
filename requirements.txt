@@ -1,0 +1,7 @@
+unittest==x.y.z
+pandas==x.y.z
+numpy==x.y.z
+scikit-learn==x.y.z
+joblib==x.y.z
+matplotlib==x.y.z
+seaborn==x.y.z

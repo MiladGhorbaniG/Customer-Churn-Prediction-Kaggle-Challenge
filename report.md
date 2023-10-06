@@ -44,6 +44,31 @@ The logistic regression model achieved an accuracy of approximately 81.16 % on t
 - `images/`: Stores saved visualizations.
 - `src/test_logistic_regression.py`: The Python script for data preprocessing, model training, and evaluation.
 - `report.ipynb`: A Jupyter Notebook report from what is done on google colab.
+- `requirements.txt` : A text file consisting the required python packages
 - `report.md`: A Markdown report (if available).
 - `images/roc_curve.png`: The ROC curve image.
 - `images/confusion_matrix.png`: The confusion matrix image.
+
+## Usage
+
+To run the project and reproduce the results, follow these steps:
+
+1. Clone this repository:
+
+   ```shell
+   git clone https://github.com/MiladGhorbaniG/python-ai-developer.git
+   cd python-ai-developer
+   ```
+
+2. Install the required dependencies:
+
+    ```shell
+    pip install -r requirements.txt
+    ```
+
+3. Execute the Python script for data preprocessing, model training, and evaluation:
+
+    ```shell
+    python src/test_logistic_regression.py
+    ```
+
