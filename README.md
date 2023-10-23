@@ -1,82 +1,74 @@
+# Customer Churn Prediction
 
-# Python Developer AI  Task
+This project aims to predict customer churn (i.e., whether a customer will discontinue their subscription) based on various features in the Telco Customer Churn dataset.
 
-Build a binary classification model to predict whether a customer will churn (i.e., discontinue their subscription) or not based on various features in the dataset. You are given a dataset containing customer information and whether they churned or not in the past. Your task is to use this dataset to train a machine learning model and evaluate its performance on a test set.
+## Methodology
 
-Dataset: You can use the Telco Customer Churn dataset, which is available on Kaggle at https://www.kaggle.com/blastchar/telco-customer-churn.
+### Data Preprocessing
 
-## Practices and patterns (Must):
+- **Data Cleaning**: The dataset was checked for missing values, and any missing data was handled appropriately.
+- **Feature Encoding**: Categorical features were encoded using label encoding.
+- **Feature Scaling**: Standard scaling was applied to normalize the feature values.
+- **Train-Test Split**: The data was split into training and testing sets with a 80-20 ratio.
 
-- [TDD](https://en.wikipedia.org/wiki/Test-driven_development): A) Processes Data Clean Up B) Train C) Performance Test
-- [DDD](https://en.wikipedia.org/wiki/Domain-driven_design): Adjust Relevant Domain
-- Clean Architecture
-- Clean Code
-- Clean git commits that shows your work progress.
+### Model Selection
 
-## Deliverables:
+- **Logistic Regression**: A logistic regression model was chosen as the primary classification algorithm.
+- **Hyperparameter Tuning**: A randomized search with cross-validation was used to find the best hyperparameters for the logistic regression model.
 
-1. Python script that reads in the dataset, preprocesses it, trains a model, and evaluates its performance on a test set.
-2. A report explaining your approach, including details on data preprocessing, feature selection/engineering, choice of algorithm, hyperparameter tuning, and evaluation metrics.
-3. A visual representation of your model's performance (e.g., ROC curve, confusion matrix).
-4. Please clone this repository in a new github repository in private mode and share with ID: `mason-chase` in private mode on github.com, make sure you do not erase my commits and then create a [pull request](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests) (code review).
+### Model Evaluation
 
-## Requirements:
+- **Accuracy**: The model's performance was evaluated using accuracy as the primary metric.
+- **Receiver Operating Characteristic (ROC) Curve**: The ROC curve was plotted to visualize the model's true positive rate and false positive rate.
+- **Confusion Matrix**: A confusion matrix was generated to assess the model's performance in terms of true positives, true negatives, false positives, and false negatives.
 
-Use Python 3.x.
-1. Use scikit-learn for the machine learning tasks.
-2. Your code should be well-documented and follow best practices for software engineering.
-3. Your report should be clear and concise, with appropriate visualizations to support your claims.
-4. Your model should achieve an accuracy of at least 75% on the test set.
+## Results
+
+The logistic regression model achieved an accuracy of approximately 81.16 % on the test set, indicating its ability to predict customer churn.
+
+## Visualizations
+
+- **ROC Curve**:
+
+![ROC Curve](images/roc_curve.png)
+
+- **Confusion Matrix**:
+
+![Confusion Matrix](images/confusion_matrix.png)
 
 
-## Test Driven
+## Repository Structure
 
-Please improve below test model with clean architecture
+- `data/`: Contains the dataset file (e.g., telco_customer_churn.csv).
+- `src/`: Includes the source code files.
+- `images/`: Stores saved visualizations.
+- `src/test_logistic_regression.py`: The Python script for data preprocessing, model training, and evaluation.
+- `report.ipynb`: A Jupyter Notebook report from what is done on google colab.
+- `requirements.txt` : A text file consisting the required python packages
+- `report.md`: A Markdown report (if available).
+- `images/roc_curve.png`: The ROC curve image.
+- `images/confusion_matrix.png`: The confusion matrix image.
 
-```python
-import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.linear_model import LogisticRegression
-from sklearn.metrics import accuracy_score
-import unittest
+## Usage
 
-class TestModel(unittest.TestCase):
+To run the project and reproduce the results, follow these steps:
 
-    def setUp(self):
-        # Load the data from a CSV file
-        self.data = pd.read_csv('data.csv')
-        
-        # Split the data into features and labels
-        self.X = self.data.drop('target', axis=1)
-        self.y = self.data['target']
-        
-        # Split the data into training and testing sets
-        self.X_train, self.X_test, self.y_train, self.y_test = train_test_split(self.X, self.y, test_size=0.2, random_state=42)
-        
-        # Preprocess the data by scaling the features
-        self.scaler = StandardScaler()
-        self.X_train = self.scaler.fit_transform(self.X_train)
-        self.X_test = self.scaler.transform(self.X_test)
-        
-        # Train the logistic regression model
-        self.model = LogisticRegression()
-        self.model.fit(self.X_train, self.y_train)
-        
-        # Test the model on the test set
-        self.y_pred = self.model.predict(self.X_test)
-        
-    def test_accuracy(self):
-        # Assert
-        expected_accuracy = 0.9
-        actual_accuracy = accuracy_score(self.y_test, self.y_pred)
-        self.assertAlmostEqual(actual_accuracy, expected_accuracy, delta=0.05)
+1. Clone this repository:
 
-    def test_model_has_coefs(self):
-        # Assert
-        self.assertIsNotNone(self.model.coef_)
+   ```shell
+   git clone https://github.com/MiladGhorbaniG/python-ai-developer.git
+   cd python-ai-developer
+   ```
 
-if __name__ == '__main__':
-    unittest.main()
-```
+2. Install the required dependencies:
+
+    ```shell
+    pip install -r requirements.txt
+    ```
+
+3. Execute the Python script for data preprocessing, model training, and evaluation:
+
+    ```shell
+    python src/test_logistic_regression.py
+    ```
 
